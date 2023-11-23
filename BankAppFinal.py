@@ -97,3 +97,32 @@ class BankApp:
 
             else:
                 print("Invalid selection! Please try again.")
+
+    def showAccountMenu(self):
+        while True:
+            print("\nACCOUNT MENU")
+            print("1. Check Balance")
+            print("2. Deposit")
+            print("3. Withdraw")
+            print("4. Exit")
+
+            Selection = input("Welcome to your account! Please select what you would like to do: ")
+
+            if Selection == "1":
+                print(f"Your current balance is {self.current_account.balance}")
+
+            elif Selection == "2":
+                amount = float(input("Enter how much you'd like to deposit"))
+                self.current_account.deposit(amount)
+                print(f"Successfully deposited {amount}. Your new balance is {self.current_account.balance}")
+
+            elif Selection == "3":
+                amount = float(input("Enter the amount you'd like to withdraw: "))
+                self.current_account.withdraw(amount)
+
+            elif Selection == "4":
+                print("Exiting now. Have a good day!")
+                break
+
+            else:
+                print("Invalid selection! Please try again.")
