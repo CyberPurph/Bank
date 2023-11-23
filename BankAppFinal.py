@@ -15,7 +15,11 @@ class SavingsAccount(Account):
         self.minimum_balance = minimum_balance
 
     def withdraw(self, amount):
-        pass
+        if (self.balance - amount) >= self.minimum_balance:
+            self.balance -= amount
+        else:
+            print("Withdrawl denied! Insufficient funds and/or minimum balance exceeded")
+
 
 class ChequingAccount(Account):
     def __init__(self, account_number, balance=0, overdraft_limit=5000):
@@ -23,7 +27,10 @@ class ChequingAccount(Account):
         self.overdraft_limit = overdraft_limit
 
     def withdraw(self, amount):
-        pass
+        if (self.balance + self.overdraft_limit) >= amount:
+            self.balance -= amount
+        else:
+            print("Withdrawl denied! Insufficient funds with overdraft limit")
 
 class Bank:
     def __init__(self):
@@ -126,3 +133,4 @@ class BankApp:
 
             else:
                 print("Invalid selection! Please try again.")
+
