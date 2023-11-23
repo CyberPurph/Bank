@@ -16,4 +16,11 @@ class SavingsAccount(Account):
 
     def withdraw(self, amount):
         pass
-             
+
+class ChequingAccount(Account):
+    def __init__(self, account_number, balance=0, overdraft_limit=5000):
+        super().__init__(account_number, balance)
+        self.overdraft_limit = overdraft_limit
+
+    def withdraw(self, amount):
+        pass
