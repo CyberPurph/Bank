@@ -24,3 +24,31 @@ class ChequingAccount(Account):
 
     def withdraw(self, amount):
         pass
+
+class Bank:
+    def __init__(self):
+        self.accounts = [
+            ChequingAccount("C1.1", 1000),
+            ChequingAccount("C1.2", 2000),
+            ChequingAccount("C1.3", 3000),
+            SavingsAccount("S1.1", 5000),
+            SavingsAccount("S1.2", 6000),
+            SavingsAccount("S1.3", 7000),
+        ]
+
+    def SearchAccount(self, account_number):
+        for account in self.accounts:
+            if account.account_number == account_number:
+                return account
+        return None
+    
+    def openAccount(self, account_type, account_number, initial_balance, parameters):
+        if account_type == "Savings":
+            new_account = SavingsAccount(account_number, initial_balance, parameters)
+        elif account_type == "Chequing":
+            new_account = ChequingAccount(account_number, initial_balance, parameters)
+        else:
+            return None
+    
+        self.accounts.append(new_account)
+        return new_account
