@@ -76,8 +76,7 @@ class BankApp:
 
             if Selection == "1":
                 account_number = input("Enter the account number: ")
-                self.current_account = self.bank.searchAccount(account_number)
-
+                self.current_account = self.bank.SearchAccount(account_number)
                 if self.current_account:
                     self.showAccountMenu()
                 else:
@@ -134,3 +133,8 @@ class BankApp:
             else:
                 print("Invalid selection! Please try again.")
 
+    def run(self):
+        self.showMainMenu()
+
+app = BankApp()
+app.run()
